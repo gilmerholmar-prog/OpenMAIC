@@ -35,7 +35,7 @@ COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY packages/ ./packages/
 COPY scripts/ ./scripts/
 
-RUN --mount=type=cache,id=pnpm-store,target=/root/.local/share/pnpm/store \
+RUN \
     npm_registry="$NPM_REGISTRY"; \
     while [ "${npm_registry%/}" != "$npm_registry" ]; do \
       npm_registry="${npm_registry%/}"; \
